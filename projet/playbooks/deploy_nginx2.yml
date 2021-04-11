@@ -1,0 +1,4 @@
+- hosts: nginx2
+  remote_user: kaisen
+  roles:
+     - nginx2

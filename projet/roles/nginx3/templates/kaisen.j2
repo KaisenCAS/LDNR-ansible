@@ -1,0 +1,19 @@
+server {
+        listen 80;
+        server_name nginx3.kaisen.lan;
+
+        location / {
+
+        return 301 https://nginx3.kaisen.lan;
+        }
+}
+
+server {
+	listen 443;
+	server_name nginx3.kaisen.lan;
+	root /srv/nginx3;
+	ssl on;
+	ssl_certificate /etc/ssl/private/nginx3.kaisen.lan.pem;
+	ssl_certificate_key /etc/ssl/private/nginx3.kaisen.lan.pem;
+	ssl_protocols TLSv1.2 TLSv1.3;
+}

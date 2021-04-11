@@ -1,0 +1,4 @@
+- hosts: promgraf
+  remote_user: kaisen
+  roles:
+     - monitoring

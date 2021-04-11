@@ -1,0 +1,39 @@
+- name: "Install nginx and TLS certs support"
+  apt:
+   pkg:
+   - nginx
+   - ca-certificates
+
+- name: "Add website PoC"
+  template:
+    src: "templates/nginx3.j2"
+    dest: "/srv/nginx3/index.html"
+    owner: "www-data"
+    group: "www-data"
+    mode: "0755"
+
+- name: "Add nginx3 TLS certificate"
+  template:
+    src: "../../secrets/nginx3.kaisen.lan.pem"
+    dest: "/etc/ssl/private"
+    owner: "root"
+    group: "root"
+    mode: 0400
+
+- name: "Add nginx2 virtualhost"
+  template:
+    src: "templates/kaisen.j2"
+    dest: "/etc/nginx/sites-available/kaisen"
+    owner: "root"
+    group: "root"
+    mode: 0644
+
+- file:
+    src: /etc/nginx/sites-available/kaisen
+    dest: /etc/nginx/sites-enabled/kaisen
+    owner: root
+    group: root
+    state: link
+
+- name: Restart nginx
+  service: name=nginx state=restarted enabled=yes

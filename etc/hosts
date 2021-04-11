@@ -10,10 +10,10 @@
 
 # Ex 1: Ungrouped hosts, specify before any group headers.
 
-promgraf.kaisen.lan
-nginx1.kaisen.lan
-nginx2.kaisen.lan
-nginx3.kaisen.lan
+promgraf
+nginx1
+nginx2
+nginx3
 
 # Ex 2: A collection of hosts belonging to the 'webservers' group
 
