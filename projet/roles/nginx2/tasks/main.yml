@@ -7,7 +7,7 @@
 - name: "Add website PoC"
   template:
     src: "templates/nginx2.j2"
-    dest: "/srv/nginx2/index.html"
+    dest: "/var/www/index.html"
     owner: "www-data"
     group: "www-data"
     mode: "0755"
